@@ -1,0 +1,107 @@
+<script>
+  /*
+  The goal of this project is to make a rock paper and scissors game in which the person inputs
+  rock paper or scissor and the computer also makes a decision. 
+  
+
+  *Prompt the user to select rock, paper or scissors*
+  *Store the user's response to compare it with computer*
+  *Have the computer randomly select between rock, paper, or scissors*
+  *Compare the results between the person and computer*
+  *Show results of the game: Win, Lose, or tie*
+  
+  
+  
+  */
+ function computerPlay() {
+     let r = 'rock';
+     let p = 'paper';
+     let s = 'scissors'
+     let rockPaperScissors = Math.floor(Math.random()* 3) + 1;
+     switch(rockPaperScissors) {
+        case 1:
+            return r;
+            break;
+        case 2:
+            return p;
+            break;
+        case 3:
+            return s;
+            break;
+            default:
+                console.log('Something is not right');
+     }
+ }
+ function playRound(playerSelection, computerSelection) {
+     playerSelection = prompt("ENTER RPS");
+     computerSelection = computerPlay();
+     let wins = 0;
+     let losses = 0;
+     let ties = 0;
+     let rounds = 0;
+     let tries = 0;
+     switch(playerSelection.toLowerCase()){
+         case "rock":
+             if(playerSelection == computerSelection){
+                 return "It's a tie";
+                 ties++;
+                 rounds++;
+             }
+             else if(playerSelection == 'rock' && computerSelection == 'paper') {
+                 return "You lose! Paper beats Rock";
+                 losses++;
+                 rounds++;
+             }
+             else{
+                 return "You win! Rock beats Scissors";
+                 wins++;
+                 rounds++;
+             }
+             break;
+        case "paper":
+            if(playerSelection == computerSelection){
+                return "It's a tie!";
+                ties++;
+                rounds++;
+            }
+            else if (playerSelection == 'paper' && computerSelection == 'scissors'){
+                return "You lose! Scissors beats Paper!";
+                losses++;
+                rounds++;
+            }
+            else{
+                return "You win! Paper beats Rock";
+                wins++;
+                rounds++;
+            }
+            break;
+            case "scissors":
+            if(playerSelection == computerSelection){
+                return "It's a tie";
+                ties++;
+                rounds++;
+            }
+            else if (playerSelection == 'scissors' && computerSelection == 'rock'){
+                return "You lose! Rock beats Scissors";
+                losses++;
+                rounds++;
+            }
+            else {
+                return "You win! Scissors beats Rock";
+                wins++;
+                rounds++;
+            }
+            break;
+            default:
+                console.log("Please type in rock, paper, or scissors!");
+                playRound();
+        }
+
+     }
+    function game(){
+        for(i = 0; i < 5; i++){
+            console.log(playRound());
+        }
+    }
+ console.log(game());
+</script>
