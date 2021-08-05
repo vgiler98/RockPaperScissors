@@ -13,6 +13,11 @@
   
   
   */
+let wins = 0;
+let losses = 0;
+let ties = 0;
+let rounds = 0;
+let tries = 0;
  function computerPlay() {
      let r = 'rock';
      let p = 'paper';
@@ -35,61 +40,65 @@
  function playRound(playerSelection, computerSelection) {
      playerSelection = prompt("ENTER RPS");
      computerSelection = computerPlay();
-     let wins = 0;
-     let losses = 0;
-     let ties = 0;
-     let rounds = 0;
-     let tries = 0;
      switch(playerSelection.toLowerCase()){
          case "rock":
              if(playerSelection == computerSelection){
-                 return "It's a tie";
                  ties++;
                  rounds++;
+                 return "It's a tie";
+                 
              }
              else if(playerSelection == 'rock' && computerSelection == 'paper') {
-                 return "You lose! Paper beats Rock";
-                 losses++;
+                losses++;
                  rounds++;
+                 return "You lose! Paper beats Rock";
+                
              }
              else{
-                 return "You win! Rock beats Scissors";
                  wins++;
                  rounds++;
+                 return "You win! Rock beats Scissors";
+                 
              }
              break;
         case "paper":
             if(playerSelection == computerSelection){
+                 ties++;
+                 rounds++;
                 return "It's a tie!";
-                ties++;
-                rounds++;
+                
+                
             }
             else if (playerSelection == 'paper' && computerSelection == 'scissors'){
+                 losses++;
+                 rounds++;
                 return "You lose! Scissors beats Paper!";
-                losses++;
-                rounds++;
+                
             }
             else{
+                 wins++;
+                 rounds++;
                 return "You win! Paper beats Rock";
-                wins++;
-                rounds++;
+              
             }
             break;
             case "scissors":
             if(playerSelection == computerSelection){
+                 ties++;
+                 rounds++;
                 return "It's a tie";
-                ties++;
-                rounds++;
+               
             }
             else if (playerSelection == 'scissors' && computerSelection == 'rock'){
+                 losses++;
+                 rounds++;
                 return "You lose! Rock beats Scissors";
-                losses++;
-                rounds++;
+                
             }
             else {
+                 wins++;
+                 rounds++;
                 return "You win! Scissors beats Rock";
-                wins++;
-                rounds++;
             }
             break;
             default:
@@ -99,9 +108,10 @@
 
      }
     function game(){
-        for(i = 0; i < 5; i++){
+        do{
             console.log(playRound());
         }
+        while(wins < 3 && losses < 3 && rounds < 5);
     }
  console.log(game());
 </script>
