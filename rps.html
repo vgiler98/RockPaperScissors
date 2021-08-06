@@ -107,11 +107,28 @@ let tries = 0;
         }
 
      }
+    function gameResult(){
+        if(wins == 3 || (wins == 1 && ties == 4) || (wins == 2 && ties == 3)){
+            return "You have won!";
+        }
+        if (losses == 3 || (losses = 1 && ties == 4) || (losses == 2 && ties == 3)){
+            return "You have lost!";
+        }
+        if(ties == 5){
+            return "It's a tie!";
+        }
+
+    }
+    function gameScore(){
+        return console.log("Wins: " + wins + " Losses: " + losses + " Ties: " + ties);
+    }
     function game(){
         do{
             console.log(playRound());
+            console.log(gameScore());
         }
         while(wins < 3 && losses < 3 && rounds < 5);
     }
  console.log(game());
+ console.log(gameResult());
 </script>
