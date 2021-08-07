@@ -108,13 +108,13 @@ let tries = 0;
 
      }
     function gameResult(){
-        if(wins == 3 || (wins == 1 && ties == 4) || (wins == 2 && ties == 3)){
+        if(wins == 3 || (wins > losses && (ties == wins||ties == 4))) {
             return "You have won!";
         }
-        if (losses == 3 || (losses = 1 && ties == 4) || (losses == 2 && ties == 3)){
+        if (losses == 3 || (losses > wins && (ties == losses|| ties == 4 ) )){
             return "You have lost!";
         }
-        if(ties == 5){
+        if(ties == 5 || (wins == losses)){
             return "It's a tie!";
         }
 
